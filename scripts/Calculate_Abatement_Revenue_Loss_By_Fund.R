@@ -69,7 +69,7 @@ abatement_all <- abatement_all %>%
 
 # -----------------------------
 # Step 5: Summarize by year
-loss_summary_by_year <- abatement_all %>%
+loss_summary_by_year_abatement <- abatement_all %>%
   group_by(TaxYear) %>%
   summarise(
     Total_Lost_General = sum(Lost_General, na.rm = TRUE),
@@ -81,7 +81,7 @@ loss_summary_by_year <- abatement_all %>%
 
 # -----------------------------
 # Step 6: Output
-print(loss_summary_by_year)
+print(loss_summary_by_year_abatement)
 
 # Optionally write to CSV
-write_csv(loss_summary_by_year, here("outputs", "accurate_abatement_loss_by_year.csv"))
+write_csv(loss_summary_by_year_abatement, here("outputs", "accurate_abatement_loss_by_year.csv"))

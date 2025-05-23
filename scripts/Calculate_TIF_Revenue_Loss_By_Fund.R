@@ -1,5 +1,5 @@
 # -----------------------------------------
-# Title: Estimate Jefferson Township Fund-Level Revenue Loss from TIFs (2014–2024)
+# Title: Accurate Fund-Level Revenue Loss from TIFs (2014–2024)
 # -----------------------------------------
 
 # Load libraries
@@ -9,7 +9,7 @@ library(readr)
 library(tibble)
 library(here)
 
-# Load your full TIF dataset
+# Load full TIF dataset
 tif_all <- read_csv(here("data", "Jefferson_TIF_Details_All_Years.csv"))
 
 # -----------------------------------------
@@ -29,7 +29,7 @@ tif_all <- tif_all %>%
   )
 
 # -----------------------------------------
-# Step 2: Millage table by TaxYear × District × PropertyClass
+# Step 2: Millage table by TaxYear × TaxDistrict × PropertyClass
 millage_data <- tibble(
   TaxYear = rep(2018:2024, each = 8),
   TaxDistrict = rep(c("170", "175", "027", "067"), times = 7 * 2),
@@ -55,7 +55,7 @@ tif_all <- tif_all %>%
 
 # -----------------------------------------
 # Step 5: Summarize by year
-loss_summary_by_year <- tif_all %>%
+loss_summary_by_year_tif <- tif_all %>%
   group_by(TaxYear) %>%
   summarise(
     Total_Lost_General = sum(Lost_General, na.rm = TRUE),
@@ -66,8 +66,8 @@ loss_summary_by_year <- tif_all %>%
   arrange(TaxYear)
 
 # -----------------------------------------
-# Output
-print(loss_summary_by_year)
+# Step 6: Output
+print(loss_summary_by_year_tif)
 
 # Optionally save
-write_csv(loss_summary_by_year, here("outputs", "tif_fund_loss_by_year.csv"))
+write_csv(loss_summary_by_year_tif, here("outputs", "accurate_tif_loss_by_year.csv"))
