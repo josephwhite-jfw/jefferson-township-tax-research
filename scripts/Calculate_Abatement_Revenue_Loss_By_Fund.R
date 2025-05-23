@@ -1,5 +1,5 @@
 # -----------------------------
-# Title: Accurate Fund-Level Revenue Losses from Abatements (with Property Class)
+# Title: Accurate Fund-Level Revenue Losses from Abatements (with Property Class, by Municipality)
 # -----------------------------
 
 # Load packages
@@ -26,6 +26,19 @@ abatement_all <- abatement_all %>%
   )
 
 # -----------------------------
+# Step 1b: Add Municipality based on TaxDistrict
+abatement_all <- abatement_all %>%
+  mutate(
+    Municipality = case_when(
+      TaxDistrict == "170" ~ "Jefferson Unincorporated",
+      TaxDistrict == "027" ~ "Gahanna",
+      TaxDistrict == "067" ~ "Reynoldsburg",
+      TaxDistrict %in% c("171", "175") ~ "Columbus",
+      TRUE ~ "Other"
+    )
+  )
+
+# -----------------------------
 # Step 2: Millage rate table with ResAgr and ComInd entries (TaxYear × TaxDistrict × PropertyClass)
 millage_data <- tibble(
   TaxYear = rep(2018:2024, each = 8),
@@ -37,7 +50,7 @@ millage_data <- tibble(
     10.385182, 8.197992, 8.647992, 8.027992, 10.218998, 8.040561, 8.490561, 7.870561,
     12.187597, 10.019635, 10.469635, 9.849635, 9.630280, 7.945525, 8.395525, 7.775525,
     9.677583, 7.983395, 8.433395, 7.813395,
-    # 2018–2024 ComInd rates (approx. higher due to no rollback)
+    # 2018–2024 ComInd rates
     13.699376, 11.2, 11.8, 11.2, 13.808519, 11.5, 11.9, 11.1,
     12.541001, 10.182938, 10.632938, 10.012938, 12.818780, 10.493242, 10.943242, 10.323242,
     14.569666, 12.242165, 12.692165, 12.072165, 12.558773, 10.780293, 11.230293, 10.610293,
@@ -68,20 +81,22 @@ abatement_all <- abatement_all %>%
   )
 
 # -----------------------------
-# Step 5: Summarize by year
-loss_summary_by_year_abatement <- abatement_all %>%
-  group_by(TaxYear) %>%
+# Step 5: Summarize by year and municipality
+loss_summary_by_year_muni_abatement <- abatement_all %>%
+  group_by(TaxYear, Municipality) %>%
   summarise(
     Total_Lost_General = sum(Lost_General, na.rm = TRUE),
     Total_Lost_Fire = sum(Lost_Fire, na.rm = TRUE),
     Total_Lost_Road = sum(Lost_Road, na.rm = TRUE),
-    Total_Lost_Township = sum(ForegoneTownship, na.rm = TRUE)
+    Total_Lost_Township = sum(ForegoneTownship, na.rm = TRUE),
+    .groups = "drop"
   ) %>%
-  arrange(TaxYear)
+  arrange(TaxYear, Municipality)
 
 # -----------------------------
 # Step 6: Output
-print(loss_summary_by_year_abatement)
+print(loss_summary_by_year_muni_abatement)
 
 # Optionally write to CSV
-write_csv(loss_summary_by_year_abatement, here("outputs", "accurate_abatement_loss_by_year.csv"))
+write_csv(loss_summary_by_year_muni_abatement, here("outputs", "accurate_abatement_loss_by_year_municipality.csv"))
+

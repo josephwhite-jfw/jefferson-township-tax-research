@@ -1,5 +1,5 @@
 # -----------------------------------------
-# Title: Accurate Fund-Level Revenue Loss from TIFs (2014–2024)
+# Title: Accurate Fund-Level Revenue Loss from TIFs by Municipality (2014–2024)
 # -----------------------------------------
 
 # Load libraries
@@ -29,6 +29,19 @@ tif_all <- tif_all %>%
   )
 
 # -----------------------------------------
+# Step 1b: Add Municipality based on TaxDistrict
+tif_all <- tif_all %>%
+  mutate(
+    Municipality = case_when(
+      TaxDistrict == "170" ~ "Jefferson Unincorporated",
+      TaxDistrict == "027" ~ "Gahanna",
+      TaxDistrict == "067" ~ "Reynoldsburg",
+      TaxDistrict %in% c("171", "175") ~ "Columbus",
+      TRUE ~ "Other"
+    )
+  )
+
+# -----------------------------------------
 # Step 2: Millage table by TaxYear × TaxDistrict × PropertyClass
 millage_data <- tibble(
   TaxYear = rep(2018:2024, each = 8),
@@ -54,20 +67,21 @@ tif_all <- tif_all %>%
   )
 
 # -----------------------------------------
-# Step 5: Summarize by year
-loss_summary_by_year_tif <- tif_all %>%
-  group_by(TaxYear) %>%
+# Step 5: Summarize by year and municipality
+loss_summary_by_year_muni_tif <- tif_all %>%
+  group_by(TaxYear, Municipality) %>%
   summarise(
     Total_Lost_General = sum(Lost_General, na.rm = TRUE),
     Total_Lost_Fire = sum(Lost_Fire, na.rm = TRUE),
     Total_Lost_Road = sum(Lost_Road, na.rm = TRUE),
-    Total_Lost_Township = Total_Lost_General + Total_Lost_Fire + Total_Lost_Road
+    Total_Lost_Township = Total_Lost_General + Total_Lost_Fire + Total_Lost_Road,
+    .groups = "drop"
   ) %>%
-  arrange(TaxYear)
+  arrange(TaxYear, Municipality)
 
 # -----------------------------------------
 # Step 6: Output
-print(loss_summary_by_year_tif)
+print(loss_summary_by_year_muni_tif)
 
 # Optionally save
-write_csv(loss_summary_by_year_tif, here("outputs", "accurate_tif_loss_by_year.csv"))
+write_csv(loss_summary_by_year_muni_tif, here("outputs", "accurate_tif_loss_by_year_municipality.csv"))
