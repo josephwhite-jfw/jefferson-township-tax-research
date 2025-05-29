@@ -1,36 +1,30 @@
-# -----------------------------------------
-# Title: Combine TIF and Abatement Revenue Losses by Year and Municipality
-# -----------------------------------------
 
-# Join on both TaxYear and Municipality
-combined_by_muni <- full_join(
-  loss_summary_by_year_muni_abatement %>%
-    rename_with(~ paste0(.x, "_Abate"), -c(TaxYear, Municipality)),
-  loss_summary_by_year_muni_tif %>%
-    rename_with(~ paste0(.x, "_TIF"), -c(TaxYear, Municipality)),
-  by = c("TaxYear", "Municipality")
-)
+# -----------------------------------------
+# Title: Generate Combined TIF + Abatement Loss Summary
+# -----------------------------------------
+library(dplyr)
+library(readr)
+library(tidyr)
+library(here)
 
-# Calculate total losses across TIFs and abatements
-combined_muni_totals <- combined_by_muni %>%
+# Load both previously saved summaries
+tif <- read_csv(here("outputs", "accurate_tif_losses.csv"))
+abatement <- read_csv(here("outputs", "accurate_abatement_losses.csv"))
+
+# Full outer join on keys
+combined <- full_join(tif, abatement, by = c("TaxYear", "Municipality", "Fund")) %>%
   mutate(
-    Total_Lost_General = coalesce(Total_Lost_General_Abate, 0) + coalesce(Total_Lost_General_TIF, 0),
-    Total_Lost_Fire = coalesce(Total_Lost_Fire_Abate, 0) + coalesce(Total_Lost_Fire_TIF, 0),
-    Total_Lost_Road = coalesce(Total_Lost_Road_Abate, 0) + coalesce(Total_Lost_Road_TIF, 0),
-    Total_Lost_Township = coalesce(Total_Lost_Township_Abate, 0) + coalesce(Total_Lost_Township_TIF, 0)
-  ) %>%
-  select(
-    TaxYear,
-    Municipality,
-    Total_Lost_General,
-    Total_Lost_Fire,
-    Total_Lost_Road,
-    Total_Lost_Township
-  ) %>%
-  arrange(TaxYear, Municipality)
+    TIF_Loss = coalesce(TIF_Loss, 0),
+    Abatement_Loss = coalesce(Abatement_Loss, 0),
+    Total_Loss = TIF_Loss + Abatement_Loss
+  )
 
-# Output result
-print(combined_muni_totals)
+# Save combined dataset
+write_csv(combined, here("outputs", "accurate_total_losses.csv"))
 
-# Save to CSV
-write_csv(combined_muni_totals, here("outputs", "totals_by_municipality_tif_abatement_loss_by_year.csv"))
+# Optional summary for latest year (2024)
+summary_2024 <- combined %>%
+  filter(TaxYear == 2024) %>%
+  arrange(Municipality, Fund)
+
+write_csv(summary_2024, here("outputs", "accurate_total_losses_2024.csv"))
