@@ -10,7 +10,8 @@ library(here)
 
 # Load data
 tif <- read_csv(here("data", "Jefferson_TIF_Details_All_Years.csv"))
-millage <- read_csv(here("data", "Township_Millage_Table__2014_2024_.csv"))
+millage <- read_csv(here("data", "Township_Millage_Table__2014_2024_.csv")) %>%
+  mutate(TaxDistrict = str_pad(as.character(TaxDistrict), 3, pad = "0"))
 
 # Standardize TaxDistrict
 tif <- tif %>%
@@ -28,7 +29,7 @@ tif <- tif %>%
 tif_joined <- tif %>%
   left_join(millage, by = c("TaxYear", "TaxDistrict", "PropertyClass")) %>%
   mutate(
-    EffectiveBase = AssessedTotal * (TIFPercentage / 100),
+    EffectiveBase = AssessedImpr * (TIFPercentage / 100),
     Lost_General = EffectiveBase * (GeneralRate / 1000),
     Lost_Fire = EffectiveBase * (FireRate / 1000),
     Lost_Road = if_else(TaxDistrict == "170", EffectiveBase * (RoadRate / 1000), 0),

@@ -1,106 +1,106 @@
 TaxYear,Municipality,Fund,TIF_Loss
-2014,Columbus,General,11505.1833
-2014,Columbus,Fire,98022.49985619
+2014,Columbus,General,9756.056700000001
+2014,Columbus,Fire,83120.19387581
 2014,Columbus,Road,0
-2014,Gahanna,General,10660.6368
-2014,Gahanna,Fire,65597.33964784
+2014,Gahanna,General,7500.5676
+2014,Gahanna,Fire,46152.71016538
 2014,Gahanna,Road,0
-2015,Columbus,General,11477.0799
-2015,Columbus,Fire,97783.06294757
+2015,Columbus,General,9727.953300000001
+2015,Columbus,Fire,76528.18728555
 2015,Columbus,Road,0
-2015,Gahanna,General,12449.5542
-2015,Gahanna,Fire,76604.95809421
+2015,Gahanna,General,9257.6682
+2015,Gahanna,Fire,52598.38478895
 2015,Gahanna,Road,0
-2016,Columbus,General,11466.1404
-2016,Columbus,Fire,97689.85998771999
+2016,Columbus,General,9717.0138
+2016,Columbus,Fire,76307.3771658
 2016,Columbus,Road,0
-2016,Gahanna,General,14250.427200000002
-2016,Gahanna,Fire,87686.14208536
+2016,Gahanna,General,11053.2114
+2016,Gahanna,Fire,62689.2436709
 2016,Gahanna,Road,0
-2017,Columbus,General,13427.622000000001
-2017,Columbus,Fire,114401.39989459999
+2017,Columbus,General,11906.025300000001
+2017,Columbus,Fire,83643.70482279
 2017,Columbus,Road,0
-2017,Gahanna,General,15321.328200000002
-2017,Gahanna,Fire,94275.64118790999
+2017,Gahanna,General,13651.432200000001
+2017,Gahanna,Fire,69265.26870711
 2017,Gahanna,Road,0
-2018,Columbus,General,13428.2304
-2018,Columbus,Fire,114406.58337472
+2018,Columbus,General,11906.6337
+2018,Columbus,Fire,83689.42836344
 2018,Columbus,Road,0
-2018,Gahanna,General,15553.911600000001
-2018,Gahanna,Fire,95706.78011257999
+2018,Gahanna,General,13884.0156
+2018,Gahanna,Fire,70480.26828752
 2018,Gahanna,Road,0
-2018,Jefferson Unincorporated,General,4152.12
-2018,Jefferson Unincorporated,Fire,41389.29129972
-2018,Jefferson Unincorporated,Road,1038.03
-2019,Columbus,General,13441.7907
-2019,Columbus,Fire,114522.11517200999
+2018,Jefferson Unincorporated,General,4130.49
+2018,Jefferson Unincorporated,Fire,34794.03023796
+2018,Jefferson Unincorporated,Road,11397.24909372
+2019,Columbus,General,11920.194
+2019,Columbus,Fire,82596.85810200001
 2019,Columbus,Road,0
-2019,Gahanna,General,15565.9158
-2019,Gahanna,Fire,95780.64470429
+2019,Gahanna,General,13896.019800000002
+2019,Gahanna,Fire,69541.0870869
 2019,Gahanna,Road,0
-2019,Jefferson Unincorporated,General,11840.92
-2019,Jefferson Unincorporated,Fire,118033.02581251999
-2019,Jefferson Unincorporated,Road,2960.23
-2019,Reynoldsburg,General,729.37
-2019,Reynoldsburg,Fire,7270.52864447
+2019,Jefferson Unincorporated,General,9344.78
+2019,Jefferson Unincorporated,Fire,79060.27100555
+2019,Jefferson Unincorporated,Road,25531.40215949
+2019,Reynoldsburg,General,181.93
+2019,Reynoldsburg,Fire,1786.06302637
 2019,Reynoldsburg,Road,0
-2020,Columbus,General,16159.2093
-2020,Columbus,Fire,137674.12912799
+2020,Columbus,General,14278.9491
+2020,Columbus,Fire,84184.68090616
 2020,Columbus,Road,0
-2020,Gahanna,General,18233.197200000002
-2020,Gahanna,Fire,112193.03799885999
+2020,Gahanna,General,16218.937800000002
+2020,Gahanna,Fire,69060.55752648
 2020,Gahanna,Road,0
-2020,Jefferson Unincorporated,General,20741.49
-2020,Jefferson Unincorporated,Fire,206755.96360418998
-2020,Jefferson Unincorporated,Road,5185.3725
-2020,Reynoldsburg,General,3469.5
-2020,Reynoldsburg,Fire,34584.7774545
+2020,Jefferson Unincorporated,General,16842.52
+2020,Jefferson Unincorporated,Fire,116179.56821984
+2020,Jefferson Unincorporated,Road,39701.0197188
+2020,Reynoldsburg,General,1679.5
+2020,Reynoldsburg,Fire,14918.894371
 2020,Reynoldsburg,Road,0
-2021,Columbus,General,16199.2233
-2021,Columbus,Fire,138015.04262818999
+2021,Columbus,General,14321.1744
+2021,Columbus,Fire,84097.86521952001
 2021,Columbus,Road,0
-2021,Gahanna,General,18234.4932
-2021,Gahanna,Fire,112201.01258365999
+2021,Gahanna,General,16220.233800000002
+2021,Gahanna,Fire,68791.42330689
 2021,Gahanna,Road,0
-2021,Jefferson Unincorporated,General,39221.86
-2021,Jefferson Unincorporated,Fire,390972.56072966
-2021,Jefferson Unincorporated,Road,9805.465
-2021,Reynoldsburg,General,4018.64
-2021,Reynoldsburg,Fire,40058.73182584
+2021,Jefferson Unincorporated,General,32144.91
+2021,Jefferson Unincorporated,Fire,235014.63381102003
+2021,Jefferson Unincorporated,Road,76339.61452038
+2021,Reynoldsburg,General,2245.83
+2021,Reynoldsburg,Fire,20938.41658086
 2021,Reynoldsburg,Road,0
-2022,Columbus,General,16202.1249
-2022,Columbus,Fire,138039.76384107
+2022,Columbus,General,14324.076000000001
+2022,Columbus,Fire,108344.311378
 2022,Columbus,Road,0
-2022,Gahanna,General,18274.9932
-2022,Gahanna,Fire,112450.21835865999
+2022,Gahanna,General,16260.733800000002
+2022,Gahanna,Fire,88828.12281615
 2022,Gahanna,Road,0
-2022,Jefferson Unincorporated,General,63488.81
-2022,Jefferson Unincorporated,Fire,632871.1239951099
-2022,Jefferson Unincorporated,Road,15872.2025
-2022,Reynoldsburg,General,4018.64
-2022,Reynoldsburg,Fire,40058.73182584
+2022,Jefferson Unincorporated,General,51000.13
+2022,Jefferson Unincorporated,Fire,459701.11656275
+2022,Jefferson Unincorporated,Road,119837.08451332002
+2022,Reynoldsburg,General,2245.83
+2022,Reynoldsburg,Fire,24866.20032195
 2022,Reynoldsburg,Road,0
-2023,Columbus,General,22988.6397
-2023,Columbus,Fire,195859.88966271
+2023,Columbus,General,19084.4901
+2023,Columbus,Fire,110519.17930325
 2023,Columbus,Road,0
-2023,Gahanna,General,20303.298000000003
-2023,Gahanna,Fire,124930.84229989999
+2023,Gahanna,General,16973.485200000003
+2023,Gahanna,Fire,70990.2921665
 2023,Gahanna,Road,0
-2023,Jefferson Unincorporated,General,104479.81
-2023,Jefferson Unincorporated,Fire,1041478.8809161099
-2023,Jefferson Unincorporated,Road,26119.9525
-2023,Reynoldsburg,General,13227.61
-2023,Reynoldsburg,Fire,131855.87205791
+2023,Jefferson Unincorporated,General,82199.74
+2023,Jefferson Unincorporated,Fire,568958.77945886
+2023,Jefferson Unincorporated,Road,152857.5403257
+2023,Reynoldsburg,General,8755.27
+2023,Reynoldsburg,Fire,84140.70999411
 2023,Reynoldsburg,Road,0
-2024,Columbus,General,23006.4588
-2024,Columbus,Fire,196011.70582084
+2024,Columbus,General,19102.3092
+2024,Columbus,Fire,111240.6649502
 2024,Columbus,Road,0
-2024,Gahanna,General,20373.6546
-2024,Gahanna,Fire,125363.76257222999
+2024,Gahanna,General,17043.841800000002
+2024,Gahanna,Fire,71682.97932155
 2024,Gahanna,Road,0
-2024,Jefferson Unincorporated,General,110721.25
-2024,Jefferson Unincorporated,Fire,1103694.99660875
-2024,Jefferson Unincorporated,Road,27680.3125
-2024,Reynoldsburg,General,12920.07
-2024,Reynoldsburg,Fire,128790.24229616999
+2024,Jefferson Unincorporated,General,88443.75
+2024,Jefferson Unincorporated,Fire,602602.20403125
+2024,Jefferson Unincorporated,Road,164875.77742499998
+2024,Reynoldsburg,General,8447.73
+2024,Reynoldsburg,Fire,81576.87327726
 2024,Reynoldsburg,Road,0
