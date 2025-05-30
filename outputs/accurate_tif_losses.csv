@@ -23,14 +23,17 @@ TaxYear,Municipality,Fund,TIF_Loss
 2017,Gahanna,General,13651.432200000001
 2017,Gahanna,Fire,69265.26870711
 2017,Gahanna,Road,0
+2017,Jefferson Unincorporated,General,0
+2017,Jefferson Unincorporated,Fire,0
+2017,Jefferson Unincorporated,Road,0
 2018,Columbus,General,11906.6337
 2018,Columbus,Fire,83689.42836344
 2018,Columbus,Road,0
 2018,Gahanna,General,13884.0156
 2018,Gahanna,Fire,70480.26828752
 2018,Gahanna,Road,0
-2018,Jefferson Unincorporated,General,4130.49
-2018,Jefferson Unincorporated,Fire,34794.03023796
+2018,Jefferson Unincorporated,General,7322.11
+2018,Jefferson Unincorporated,Fire,65778.80700688
 2018,Jefferson Unincorporated,Road,11397.24909372
 2019,Columbus,General,11920.194
 2019,Columbus,Fire,82596.85810200001
@@ -38,8 +41,8 @@ TaxYear,Municipality,Fund,TIF_Loss
 2019,Gahanna,General,13896.019800000002
 2019,Gahanna,Fire,69541.0870869
 2019,Gahanna,Road,0
-2019,Jefferson Unincorporated,General,9344.78
-2019,Jefferson Unincorporated,Fire,79060.27100555
+2019,Jefferson Unincorporated,General,13966.74
+2019,Jefferson Unincorporated,Fire,124435.48051119
 2019,Jefferson Unincorporated,Road,25531.40215949
 2019,Reynoldsburg,General,181.93
 2019,Reynoldsburg,Fire,1786.06302637
@@ -50,8 +53,8 @@ TaxYear,Municipality,Fund,TIF_Loss
 2020,Gahanna,General,16218.937800000002
 2020,Gahanna,Fire,69060.55752648
 2020,Gahanna,Road,0
-2020,Jefferson Unincorporated,General,16842.52
-2020,Jefferson Unincorporated,Fire,116179.56821984
+2020,Jefferson Unincorporated,General,22388.87
+2020,Jefferson Unincorporated,Fire,165447.45139614
 2020,Jefferson Unincorporated,Road,39701.0197188
 2020,Reynoldsburg,General,1679.5
 2020,Reynoldsburg,Fire,14918.894371
@@ -62,8 +65,8 @@ TaxYear,Municipality,Fund,TIF_Loss
 2021,Gahanna,General,16220.233800000002
 2021,Gahanna,Fire,68791.42330689
 2021,Gahanna,Road,0
-2021,Jefferson Unincorporated,General,32144.91
-2021,Jefferson Unincorporated,Fire,235014.63381102003
+2021,Jefferson Unincorporated,General,37691.26
+2021,Jefferson Unincorporated,Fire,286724.59707772004
 2021,Jefferson Unincorporated,Road,76339.61452038
 2021,Reynoldsburg,General,2245.83
 2021,Reynoldsburg,Fire,20938.41658086
@@ -74,8 +77,8 @@ TaxYear,Municipality,Fund,TIF_Loss
 2022,Gahanna,General,16260.733800000002
 2022,Gahanna,Fire,88828.12281615
 2022,Gahanna,Road,0
-2022,Jefferson Unincorporated,General,51000.13
-2022,Jefferson Unincorporated,Fire,459701.11656275
+2022,Jefferson Unincorporated,General,56546.48
+2022,Jefferson Unincorporated,Fire,521111.2189105
 2022,Jefferson Unincorporated,Road,119837.08451332002
 2022,Reynoldsburg,General,2245.83
 2022,Reynoldsburg,Fire,24866.20032195
@@ -86,8 +89,8 @@ TaxYear,Municipality,Fund,TIF_Loss
 2023,Gahanna,General,16973.485200000003
 2023,Gahanna,Fire,70990.2921665
 2023,Gahanna,Road,0
-2023,Jefferson Unincorporated,General,82199.74
-2023,Jefferson Unincorporated,Fire,568958.77945886
+2023,Jefferson Unincorporated,General,88482.59
+2023,Jefferson Unincorporated,Fire,629338.80883391
 2023,Jefferson Unincorporated,Road,152857.5403257
 2023,Reynoldsburg,General,8755.27
 2023,Reynoldsburg,Fire,84140.70999411
@@ -98,8 +101,8 @@ TaxYear,Municipality,Fund,TIF_Loss
 2024,Gahanna,General,17043.841800000002
 2024,Gahanna,Fire,71682.97932155
 2024,Gahanna,Road,0
-2024,Jefferson Unincorporated,General,88443.75
-2024,Jefferson Unincorporated,Fire,602602.20403125
+2024,Jefferson Unincorporated,General,94726.6
+2024,Jefferson Unincorporated,Fire,663273.56287795
 2024,Jefferson Unincorporated,Road,164875.77742499998
 2024,Reynoldsburg,General,8447.73
 2024,Reynoldsburg,Fire,81576.87327726

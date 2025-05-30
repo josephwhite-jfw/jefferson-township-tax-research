@@ -19,11 +19,11 @@ abatement <- abatement %>%
     PropertyClass = "ResAgr"  # Default assumption (mostly CRA)
   )
 
-# PATCH: Add TaxDistrict 171 as a copy of 175 (Columbus)
+# PATCH: Add TaxDistrict 171 as a copy of 170 (Columbus)
 millage <- millage %>%
   mutate(TaxDistrict = str_pad(TaxDistrict, 3, pad = "0")) %>%
   bind_rows(
-    filter(., TaxDistrict == "175") %>% mutate(TaxDistrict = "171")
+    filter(., TaxDistrict == "170") %>% mutate(TaxDistrict = "171")
   )
 
 # Join with millage

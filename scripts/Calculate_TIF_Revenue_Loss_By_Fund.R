@@ -1,4 +1,3 @@
-
 # -----------------------------------------
 # Title: Calculate TIF Revenue Loss by Fund
 # -----------------------------------------
@@ -8,12 +7,17 @@ library(stringr)
 library(tidyr)
 library(here)
 
-# Load data
+# Load TIF data
 tif <- read_csv(here("data", "Jefferson_TIF_Details_All_Years.csv"))
-millage <- read_csv(here("data", "Township_Millage_Table__2014_2024_.csv")) %>%
-  mutate(TaxDistrict = str_pad(as.character(TaxDistrict), 3, pad = "0"))
 
-# Standardize TaxDistrict
+# Load and patch millage table to include 171 with 170's rates
+millage <- read_csv(here("data", "Township_Millage_Table__2014_2024_.csv")) %>%
+  mutate(TaxDistrict = str_pad(as.character(TaxDistrict), 3, pad = "0")) %>%
+  bind_rows(
+    filter(., TaxDistrict == "170") %>% mutate(TaxDistrict = "171")
+  )
+
+# Standardize TIF fields
 tif <- tif %>%
   mutate(
     TaxDistrict = str_pad(as.character(TaxDistrict), 3, pad = "0"),
@@ -25,7 +29,7 @@ tif <- tif %>%
     )
   )
 
-# Join millage rates
+# Join and calculate losses
 tif_joined <- tif %>%
   left_join(millage, by = c("TaxYear", "TaxDistrict", "PropertyClass")) %>%
   mutate(
@@ -34,13 +38,13 @@ tif_joined <- tif %>%
     Lost_Fire = EffectiveBase * (FireRate / 1000),
     Lost_Road = if_else(TaxDistrict == "170", EffectiveBase * (RoadRate / 1000), 0),
     Municipality = case_when(
-      TaxDistrict == "170" ~ "Jefferson Unincorporated",
+      TaxDistrict %in% c("170", "171") ~ "Jefferson Unincorporated",
       TaxDistrict == "027" ~ "Gahanna",
       TaxDistrict == "067" ~ "Reynoldsburg",
-      TaxDistrict %in% c("175", "171") ~ "Columbus",
+      TaxDistrict == "175" ~ "Columbus",
       TRUE ~ "Other"
     )
-  )
+      )
 
 # Summarize and reshape
 tif_summary <- tif_joined %>%
