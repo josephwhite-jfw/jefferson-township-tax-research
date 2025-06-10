@@ -1,4 +1,3 @@
-
 # -----------------------------------------
 # Title: Generate Combined TIF + Abatement Loss Summary
 # -----------------------------------------
@@ -7,11 +6,11 @@ library(readr)
 library(tidyr)
 library(here)
 
-# Load both previously saved summaries
+# Load summaries
 tif <- read_csv(here("outputs", "accurate_tif_losses.csv"))
 abatement <- read_csv(here("outputs", "accurate_abatement_losses.csv"))
 
-# Full outer join on keys
+# Merge and calculate totals
 combined <- full_join(tif, abatement, by = c("TaxYear", "Municipality", "Fund")) %>%
   mutate(
     TIF_Loss = coalesce(TIF_Loss, 0),
@@ -19,12 +18,11 @@ combined <- full_join(tif, abatement, by = c("TaxYear", "Municipality", "Fund"))
     Total_Loss = TIF_Loss + Abatement_Loss
   )
 
-# Save combined dataset
+# Save outputs
 write_csv(combined, here("outputs", "accurate_total_losses.csv"))
 
-# Optional summary for latest year (2024)
-summary_2024 <- combined %>%
+# Save 2024 summary separately
+combined %>%
   filter(TaxYear == 2024) %>%
-  arrange(Municipality, Fund)
-
-write_csv(summary_2024, here("outputs", "accurate_total_losses_2024.csv"))
+  arrange(Municipality, Fund) %>%
+  write_csv(here("outputs", "accurate_total_losses_2024.csv"))

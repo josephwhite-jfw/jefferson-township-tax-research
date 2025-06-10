@@ -8,7 +8,7 @@ library(tidyr)
 library(here)
 
 # Load TIF data
-tif <- read_csv(here("data", "Jefferson_TIF_Details_All_Years.csv"))
+tif <- read_csv(here("data", "Matched_Parcel_TIF_Only.csv"))
 
 # Load and patch millage table to include 171 with 170's rates
 millage <- read_csv(here("data", "Township_Millage_Table__2014_2024_.csv")) %>%
@@ -17,14 +17,17 @@ millage <- read_csv(here("data", "Township_Millage_Table__2014_2024_.csv")) %>%
     filter(., TaxDistrict == "170") %>% mutate(TaxDistrict = "171")
   )
 
-# Standardize TIF fields
+# Standardize TIF fields (TaxRateType used instead of TaxableLUC)
 tif <- tif %>%
   mutate(
+    TIFMLND = as.numeric(TIFMLND),
+    TIFMBLD = as.numeric(TIFMBLD),
+    TIFPercentage = as.numeric(TIFPercentage),
     TaxDistrict = str_pad(as.character(TaxDistrict), 3, pad = "0"),
     TaxYear = as.integer(TaxYear),
     PropertyClass = case_when(
-      str_starts(TaxableLUC, "5") ~ "ResAgr",
-      str_starts(TaxableLUC, "3") | str_starts(TaxableLUC, "4") ~ "ComInd",
+      TaxRateType == "Res/Ag" ~ "ResAgr",
+      TaxRateType == "Com/Ind" ~ "ComInd",
       TRUE ~ NA_character_
     )
   )
@@ -33,10 +36,10 @@ tif <- tif %>%
 tif_joined <- tif %>%
   left_join(millage, by = c("TaxYear", "TaxDistrict", "PropertyClass")) %>%
   mutate(
-    EffectiveBase = AssessedImpr * (TIFPercentage / 100),
+    EffectiveBase = ((TIFMLND + TIFMBLD) * 0.35) * (TIFPercentage / 100),
     Lost_General = EffectiveBase * (GeneralRate / 1000),
     Lost_Fire = EffectiveBase * (FireRate / 1000),
-    Lost_Road = if_else(TaxDistrict == "170", EffectiveBase * (RoadRate / 1000), 0),
+    Lost_Road = if_else(TaxDistrict %in% c("170", "171"), EffectiveBase * (RoadRate / 1000), 0),
     Municipality = case_when(
       TaxDistrict %in% c("170", "171") ~ "Jefferson Unincorporated",
       TaxDistrict == "027" ~ "Gahanna",
@@ -44,7 +47,7 @@ tif_joined <- tif %>%
       TaxDistrict == "175" ~ "Columbus",
       TRUE ~ "Other"
     )
-      )
+  )
 
 # Summarize and reshape
 tif_summary <- tif_joined %>%

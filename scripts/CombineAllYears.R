@@ -25,19 +25,32 @@ write.csv(jefferson_abatements_all_years, here("data", "Jefferson_Abatement_Deta
 
 cat("✅ Abatement dataset saved with", nrow(jefferson_abatements_all_years), "rows\n")
 
-
 # ===============================
 # 2. Combine Jefferson TIFs
 # ===============================
+
+# ===============================
+# 2. Combine Jefferson TIFs (overwrite ParcelNumber to strip trailing '-00')
+# ===============================
+
+library(readxl)
+library(dplyr)
+library(stringr)
+library(here)
+library(purrr)
 
 tif_folder <- here("data-raw")
 tif_files <- list.files(path = tif_folder, pattern = "[Tt][Ii][Ff]Details.*\\.xlsx$", full.names = TRUE)
 
 process_tif_file <- function(file_path) {
   df <- read_excel(file_path, col_types = "text")
+  
   df %>%
     filter(trimws(Township) == "JEFFERSON TWP") %>%
-    mutate(SourceFile = basename(file_path))
+    mutate(
+      SourceFile = basename(file_path),
+      ParcelNumber = str_replace(ParcelNumber, "-00$", "")  # Overwrite by stripping only final '-00'
+    )
 }
 
 jefferson_tifs_all_years <- map_dfr(tif_files, process_tif_file)

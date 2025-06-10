@@ -19,7 +19,7 @@ abatement <- abatement %>%
     PropertyClass = "ResAgr"  # Default assumption (mostly CRA)
   )
 
-# PATCH: Add TaxDistrict 171 as a copy of 170 (Columbus)
+# PATCH: Add TaxDistrict 171 as a copy of 170 (Jefferson Unincorporated)
 millage <- millage %>%
   mutate(TaxDistrict = str_pad(TaxDistrict, 3, pad = "0")) %>%
   bind_rows(
@@ -32,12 +32,12 @@ abatement_joined <- abatement %>%
   mutate(
     Lost_General = ForegoneTownship * (GeneralRate / TotalTownshipMillage),
     Lost_Fire = ForegoneTownship * (FireRate / TotalTownshipMillage),
-    Lost_Road = if_else(TaxDistrict == "170", ForegoneTownship * (RoadRate / TotalTownshipMillage), 0),
+    Lost_Road = if_else(TaxDistrict %in% c("170", "171"), ForegoneTownship * (RoadRate / TotalTownshipMillage), 0),
     Municipality = case_when(
-      TaxDistrict == "170" ~ "Jefferson Unincorporated",
+      TaxDistrict %in% c("170", "171") ~ "Jefferson Unincorporated",
       TaxDistrict == "027" ~ "Gahanna",
       TaxDistrict == "067" ~ "Reynoldsburg",
-      TaxDistrict %in% c("175", "171") ~ "Columbus",
+      TaxDistrict == "175" ~ "Columbus",
       TRUE ~ "Other"
     )
   )
