@@ -9,7 +9,7 @@ library(here)
 
 # Load data
 abatement <- read_csv(here("data", "Jefferson_Abatement_Details_All_Years.csv"))
-millage <- read_csv(here("data", "Township_Millage_Table__2014_2024_.csv"))
+millage <- read_csv(here("data", "Township_Millage_Table.csv"))
 
 # Extract TaxDistrict from ParcelNumber
 abatement <- abatement %>%
