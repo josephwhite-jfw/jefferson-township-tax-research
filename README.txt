@@ -1,6 +1,6 @@
-# Jefferson Township Tax Incentive Revenue Loss Tracker
+# Jefferson Township Tax Incentive Tracker
 
-This project analyzes the financial impact of Tax Increment Financing (TIF) and property tax abatements on Jefferson Township, Ohio. The purpose is to quantify the annual revenue diverted from township services—including the General, Fire, and Road funds—due to these economic development incentives.
+This project analyzes the financial impact of Tax Increment Financing (TIF) and property tax abatements on Jefferson Township, Ohio. The purpose is to quantify the annual revenue diverted from township services, including the General, Fire, and Road funds—due to these economic development incentives.
 
 ## Project Overview
 
@@ -24,11 +24,3 @@ The project produces:
 - A comprehensive CSV file showing annual losses by municipality, fund, and tax year
 - Separate breakdowns for TIF and Abatement-related losses
 - Stacked bar charts illustrating loss trends over time
-
-## Scope and Assumptions
-
-- Analysis currently covers tax years **2014–2024**
-- Municipalities included: **Jefferson Unincorporated, Gahanna, Reynoldsburg, Columbus**
-- Road fund calculations apply only to tax districts 170 and 171
-- Abatement calculations assume parcels are in the “Res/Ag” property class
-- New tax districts or changes in file formats may require manual script updates
